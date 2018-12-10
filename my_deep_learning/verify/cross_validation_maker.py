@@ -5,10 +5,10 @@ class Trainer:
         self.train_num = train_num
 
     def train(self, train_list:list)->list:
-        return 
+        return list()
 
     def verify(self, test_list:list)->float:
-        return
+        return float()
         
 class CrossValidationMaker:
     def __init__(self, split_size:int, data_list:list, trainer:Trainer):
@@ -37,3 +37,14 @@ class CrossValidationMaker:
             print(accuracy_list[test_index])
 
         print(np.mean(accuracy_list))
+
+def main():
+    class TestTrainer(Trainer):
+    def __init__(self, train_num):
+        super(TestTrainer, self).__init__(train)
+
+    def train(self, train_list:list)->list:
+        return list()
+
+    def verify(self, test_list:list)->float:
+        return float()
