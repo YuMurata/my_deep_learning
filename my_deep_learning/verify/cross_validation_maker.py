@@ -28,14 +28,15 @@ class CrossValidationMaker:
         return data_dict
 
     def cross_validation(self):
+        print('start cross validation ...')
         accuracy_list = [None]*self.split_size
         loss_list = [None]*self.split_size
         for test_index in range(self.split_size):
+            print('{0}/{1} test ...'.format(test_index, self.split_size))
             data_dict = self.make_train_test_data(test_index)
             loss_list[test_index] = self.trainer.train(data_dict['train'])
             accuracy_list[test_index] = self.trainer.verify(data_dict['test'])
-        
-
+        print('complete cross validation')
         return loss_list, accuracy_list
 
 def main():
