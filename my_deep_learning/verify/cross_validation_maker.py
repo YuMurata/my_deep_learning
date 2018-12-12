@@ -4,8 +4,8 @@ class Trainer:
     def __init__(self, train_num):
         self.train_num = train_num
 
-    def train(self, train_list:list)->list:
-        return list()
+    def train(self, train_list:list, test_index:int):
+        return
 
     def verify(self, test_list:list)->float:
         return float()
@@ -30,14 +30,13 @@ class CrossValidationMaker:
     def cross_validation(self):
         print('start cross validation ...')
         accuracy_list = [None]*self.split_size
-        loss_list = [None]*self.split_size
         for test_index in range(self.split_size):
             print('{0}/{1} test ...'.format(test_index, self.split_size))
             data_dict = self.make_train_test_data(test_index)
-            loss_list[test_index] = self.trainer.train(data_dict['train'])
+            self.trainer.train(data_dict['train'], test_index)
             accuracy_list[test_index] = self.trainer.verify(data_dict['test'])
         print('complete cross validation')
-        return loss_list, accuracy_list
+        return accuracy_list
 
 def main():
     class TestTrainer(Trainer):
